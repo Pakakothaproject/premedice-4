@@ -1,68 +1,36 @@
 # Premedice 4 — Safety
 
-**Status:** Preview
+**Status:** Beta
 **Last updated:** 3 November 2026
 
 ---
 
-## 1. Intended use
+## Intended use
 
-Premedice 4 is an information and decision-support tool. It is not a medical device, not a diagnosis, and not a substitute for a licensed clinician.
+Premedice 4 is an information and decision-support model. It is built to help patients, caregivers and clinicians understand a medical record and act on it with better context.
 
-## 2. Emergency use
+## Emergency use
 
-Premedice must not be used for emergency triage or emergency care.
+Premedice is not for emergency care. Chest pain, stroke symptoms, severe bleeding, anaphylaxis, difficulty breathing, loss of consciousness, or suicidal thoughts require local emergency services or a crisis line immediately.
 
-If a person has chest pain, stroke symptoms, severe bleeding, anaphylaxis, difficulty breathing, loss of consciousness, or suicidal thoughts, they should contact local emergency services or a crisis line immediately.
+## Clinical decisions
 
-## 3. No autonomous diagnosis or prescribing
+Clinical decisions remain with a qualified professional who knows the patient. Premedice does not replace a licensed clinician.
 
-Premedice must not:
+## Evidence
 
-- issue a definitive diagnosis
-- authorize a prescription
-- set or change a dose
-- order treatment
-- replace a clinician's sign-off
+Premedice returns sources with its answers. Sources should be read and checked against the patient's full context. A cited answer is a starting point for review, not a substitute for clinical judgment.
 
-Any clinical action requires a licensed professional who has reviewed the source evidence and the patient's full context.
+## Doctor sharing
 
-## 4. Evidence checks are not guarantees
+Doctor access is patient-controlled, scoped and revocable. Sharing a record is not a clinical endorsement.
 
-Premedice uses a post-answer verification pass. It can:
+## Data safety
 
-- time out
-- fail open
-- miss a red flag
-- accept a weak source
-- show a warning without changing the main answer
-
-A missing warning is not proof that an answer is safe.
-
-## 5. Doctor sharing
-
-A shared record is not a clinical endorsement. Doctor accounts are invitation-based and scoped, but professional-email verification and signed review are still being expanded. Do not treat an unverified account as a verified clinician.
-
-## 6. Data safety
-
-- Do not submit PHI to a deployment without an appropriate agreement.
-- Do not put PHI in GitHub issues, pull requests, or discussions.
-- Do not paste patient records into public evaluation cases.
+- Do not submit PHI without an appropriate agreement.
+- Do not put patient data in GitHub issues, pull requests or discussions.
 - Report a vulnerability through GitHub private vulnerability reporting; see [SECURITY.md](../SECURITY.md).
 
-## 7. Reporting a safety problem
+## Reporting a safety problem
 
-For a product safety issue, include:
-
-- the model ID
-- the request type
-- whether a red flag was missed
-- whether a source was wrong
-- whether the issue is reproducible
-- a redacted example
-
-Do not include patient identifiers.
-
-## 8. Safety claims
-
-No safety claim is valid without a published evaluation. The current evaluation protocol is in [evaluation.md](evaluation.md). The current limitations are in [limitations.md](limitations.md).
+Include the request type, the answer, whether a source was wrong, and a redacted example. Do not include patient identifiers.

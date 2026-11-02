@@ -1,22 +1,22 @@
 # Premedice 4 — API
 
-**Status:** Preview
+**Status:** Beta
 **Base URL:** `https://api.premedice.com`
-**Canonical model ID:** `Premedice/Premed-4`
+**Model ID:** `Premedice/Premed-4`
 
 ---
 
-## 1. Authentication
+## Authentication
 
 ```http
 Authorization: Bearer pm_live_YOUR_KEY
 ```
 
-Keys are created in the Premedice dashboard. Never publish a live key.
+Keys are created in the Premedice dashboard. Keep live keys private.
 
 ---
 
-## 2. Chat completions
+## Chat completions
 
 ```bash
 curl https://api.premedice.com/v1/chat/completions \
@@ -33,18 +33,16 @@ curl https://api.premedice.com/v1/chat/completions \
   }'
 ```
 
-The response shape follows the OpenAI Chat Completions format. The API also returns Premedice metadata when available.
+The response follows the OpenAI Chat Completions format and includes citation metadata where available.
 
 ---
 
-## 3. Model list
+## Model list
 
 ```bash
 curl https://api.premedice.com/v1/models \
   -H "Authorization: Bearer pm_live_YOUR_KEY"
 ```
-
-The live model list currently advertises:
 
 ```json
 {
@@ -61,7 +59,7 @@ The live model list currently advertises:
 
 ---
 
-## 4. Lab interpretation
+## Lab interpretation
 
 ```bash
 curl https://api.premedice.com/v1/labs/interpret \
@@ -76,17 +74,15 @@ curl https://api.premedice.com/v1/labs/interpret \
   }'
 ```
 
-The API returns an interpretation with sources and safety flags. It does not diagnose or prescribe.
+Returns an interpretation with sources and safety flags.
 
 ---
 
-## 5. Evidence verification
+## Evidence verification
 
 ```http
 POST /v1/evidence/verify
 ```
-
-Request:
 
 ```json
 {
@@ -101,29 +97,26 @@ Request:
 }
 ```
 
-The endpoint returns whether the claim is supported, unsupported, or requires more evidence.
+Returns whether the claim is supported, unsupported, or needs more evidence.
 
 ---
 
-## 6. MCP
-
-The API exposes an MCP endpoint at:
+## MCP
 
 ```text
 https://api.premedice.com/mcp
 ```
 
-It uses the same `pm_live_*` key and is intended for other AI clients that want to delegate medical research to Premedice.
+Uses the same `pm_live_*` key. Built for AI clients that want to delegate medical research to Premedice.
 
 ---
 
-## 7. Preview limits
+## Usage
 
-- No public uptime SLA.
-- No public latency SLA.
-- Rate limits and response fields may change.
-- The API is decision support, not a diagnosis.
-- Do not use it for emergency care.
-- Do not send PHI unless the deployment has an appropriate agreement.
+- Use a key with the appropriate plan.
+- Rate limits apply per key.
+- Do not use the API for emergency care.
+- Do not send PHI without an appropriate agreement.
+- Clinical decisions remain with a licensed professional.
 
-See [reliability.md](reliability.md) and [limitations.md](limitations.md).
+See [Safety](safety.md).

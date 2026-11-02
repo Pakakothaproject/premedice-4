@@ -1,7 +1,7 @@
 cff-version: 1.2.0
 message: "If you use this model card or documentation, cite it as below."
 title: "Premedice 4 — Model Card"
-abstract: "Public model card, evaluation protocol, safety notes, limitations, and API documentation for Premedice 4, a proprietary medical reasoning system in preview."
+abstract: "Model card and product documentation for Premedice 4, a proprietary medical reasoning model for earlier warning tracking, cited answers, and whole-record context."
 type: software
 authors:
   - name: "Premedice"
@@ -9,7 +9,7 @@ authors:
 repository-code: "https://github.com/Pakakothaproject/premedice-4"
 url: "https://premedice.com"
 license: MIT
-version: "0.1.0-preview"
+version: "0.1.0"
 date-released: "2026-11-03"
 keywords:
   - medical-ai

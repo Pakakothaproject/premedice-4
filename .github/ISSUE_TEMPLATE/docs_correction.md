@@ -1,6 +1,6 @@
 ---
 name: Documentation correction
-about: Correct a model card, evaluation protocol, API doc, or limitation
+about: Correct a model card, results page, API doc, or safety note
 title: "[Docs] "
 labels: documentation
 assignees: ""

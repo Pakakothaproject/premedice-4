@@ -6,7 +6,7 @@
 
 <p align="center">
   <strong>A medical reasoning model.</strong><br/>
-  One model identifier. Live clinical sources. Cited answers. Whole-record context.
+  Earlier warning tracking. Cited answers. Whole-record context.
 </p>
 
 <p align="center">
@@ -17,126 +17,55 @@
 </p>
 
 <p align="center">
-  <img alt="Status: preview" src="https://img.shields.io/badge/status-preview-orange" />
+  <img alt="Status: beta" src="https://img.shields.io/badge/status-beta-00C853" />
   <img alt="License: MIT" src="https://img.shields.io/badge/license-MIT-blue" />
-  <img alt="Modalities: text + tools" src="https://img.shields.io/badge/modalities-text%20%2B%20tools-0B0B0B" />
+  <img alt="Output: cited answers" src="https://img.shields.io/badge/output-cited%20answers-0B0B0B" />
 </p>
 
 ---
 
-## What Premedice 4 is
+## What Premedice 4 delivers
 
-Premedice 4 is a **proprietary medical reasoning system** built and operated by Premedice.
+Premedice 4 is a **proprietary medical reasoning model** built and operated by Premedice.
 
-It is an inference-time system, not a foundation model. It does not ship model weights, and this repository does not contain a training corpus.
+It is designed for the moment a short appointment cannot cover: the small changes across labs, medicines, symptoms and history that are easy to miss, and the evidence a patient or clinician needs to act on them.
 
-It combines a reasoning layer with a clinical tool router, whole-record context and a verification pass. It reads the request, plans the evidence work, retrieves from clinical sources, drafts the answer, checks it against the evidence, and returns one cited response.
+**Results you get:**
 
-**What the model adds:**
-
-- whole-record context (labs, medicines, documents, history)
-- live access to clinical sources
-- tool routing for evidence retrieval
-- citation and uncertainty checks
-- a second-pass verification layer
-- earlier warning tracking across the record
-- one OpenAI-compatible model identifier
-
-You send one request. Premedice 4 plans the evidence work, runs the tools, reads the results, and returns a single cited answer. Its main advantage is tracking warning signals earlier across labs, medicines, symptoms and history — the changes a short visit can miss.
+- **Earlier warning tracking** across labs, medicines, symptoms and history.
+- **Cited answers** with sources attached.
+- **Whole-record context** for patients, caregivers and clinicians.
+- **Clinician-ready summaries** built from the active record.
+- **Plain-language explanations** of labs, medicines and reports.
+- **One API** for chat, lab interpretation and evidence verification.
 
 ---
 
-## Why Premedice 4?
+## What it is used for
 
-Medical knowledge changes faster than any single model can be retrained. A model frozen at training time is a liability when labels change, trials read out, or a guideline is updated.
-
-Premedice 4 treats the model as the **reasoning layer**, not the **knowledge layer**:
-
-1. Read the request and the patient context.
-2. Decide which clinical sources are required.
-3. Retrieve from those sources in parallel where possible.
-4. Draft the answer from the retrieved evidence.
-5. Verify claims against the tool output.
-6. Return one answer with citations and explicit uncertainty.
+- Understanding a lab report in the context of the whole record.
+- Spotting a meaningful change between visits.
+- Reviewing medicines, interactions and pharmacogenomic notes.
+- Preparing a focused summary for a clinician.
+- Researching a condition, guideline or trial with citations.
+- Building patient-education and clinical-support products.
 
 ---
 
-## Architecture
+## Coverage
 
-```mermaid
-flowchart LR
-  U[Client request] --> O[Premedice 4 model]
-  O --> M[Premedice 4 reasoning core]
-  O --> R[Patient record context]
-  O --> T[Clinical tool router]
-  T --> L[PubMed / Europe PMC / Cochrane]
-  T --> D[OpenFDA / RxNorm / DailyMed / CPIC / ClinPGx]
-  T --> C[ClinicalTrials.gov / Open Targets / ChEMBL]
-  T --> H[HPO / Orphanet / MONDO]
-  T --> A[AlphaFold]
-  M --> V[Verification pass]
-  L --> V
-  D --> V
-  C --> V
-  H --> V
-  A --> V
-  V --> S[Cited answer]
-```
-
----
-
-## Evaluation status
-
-Premedice 4 is in preview. The composite model evaluation is in progress.
-
-| Evaluation | Status |
+| Area | Available |
 |---|---|
-| Medical reasoning | In progress |
-| Citation precision | In progress |
-| Tool-call accuracy | In progress |
-| Safety / red-flag handling | In progress |
-| External clinical validation | Not yet published |
-| Public benchmark results | Not yet published |
-
-We do not republish third-party benchmark results as Premedice 4 results. Composite results will be published with their methodology and limitations.
-
-## Documentation
-
-- [Model card](docs/model-card.md) — intended use, architecture, data handling, evaluation status, limitations.
-- [Evaluation protocol](docs/evaluation.md) — how clinical accuracy will be measured before any claim is made.
-- [Limitations](docs/limitations.md) — known clinical, evidence, record, doctor, operational, and regulatory limits.
-- [Safety](docs/safety.md) — emergency use, autonomous-action limits, evidence checks, and data safety.
-- [API](docs/api.md) — authentication, chat, labs, evidence, MCP, and preview limits.
-- [Reliability](docs/reliability.md) — what is measured, what is not, and client behavior.
-- [Architecture](docs/architecture.md) — request flow and design principles.
-- [Roadmap](docs/roadmap.md) — now, next, later, and not planned.
-- [Public evaluation harness](evaluation/README.md) — structural smoke tests, not clinical validation.
-- [Security policy](SECURITY.md), [changelog](CHANGELOG.md), [citation](CITATION.cff).
-
-## What Premedice 4 is good at
-
-- Medical question answering with retrieved evidence
-- Lab and document interpretation
-- Drug interaction and pharmacogenomic review
-- Guideline and trial lookup
-- Rare-disease phenotype matching
-- Literature synthesis with citations
-- Patient-education drafts
-- Clinician-ready summaries
-
-## What it is not for
-
-- Diagnosis or treatment decisions
-- Replacing a licensed clinician
-- Real-time clinical monitoring
-- DICOM, ECG or imaging interpretation
-- Emergency care
+| Clinical data sources | 45+ live sources and tools |
+| Clinical skills | 76 active skills |
+| Lab markers | 54 common markers with trends and reference checks |
+| Output | Cited answers with uncertainty language |
+| Access | Web app, OpenAI-compatible API, MCP |
+| Records | Labs, medicines, documents, symptoms, timeline, notes |
 
 ---
 
 ## API
-
-Premedice 4 is available in preview through the Premedice API. The request shape below is the current preview contract.
 
 ```bash
 curl https://api.premedice.com/v1/chat/completions \
@@ -150,37 +79,34 @@ curl https://api.premedice.com/v1/chat/completions \
   }'
 ```
 
-OpenAI-compatible request and streaming shape. Tool calls happen server-side. Final availability will be announced through the Premedice API.
+OpenAI-compatible request and streaming shape.
+
+See the [API documentation](docs/api.md).
 
 ---
 
-## Specifications
+## Safety boundaries
 
-| Property | Value |
-|---|---|
-| Model ID | `Premedice/Premed-4` |
-| Class | Proprietary medical reasoning system (not a foundation model) |
-| Input | Text + patient-record context |
-| Output | Text + citations |
-| Tool use | Server-side, automatic |
-| Context | Large-context (preview) |
-| Streaming | OpenAI-compatible SSE |
-| Status | Preview |
-
----
-
-## Safety and limitations
-
-- Premedice 4 is an information tool, not a medical device.
-- Outputs may be incomplete, outdated or wrong.
-- Citations should be read, not assumed.
-- Clinical decisions require a licensed professional.
+- Premedice is decision support, not a diagnosis.
+- It does not replace a licensed clinician.
 - Emergency symptoms require local emergency services.
+
+---
+
+## Documentation
+
+- [What Premedice 4 delivers](docs/results.md)
+- [Model card](docs/model-card.md)
+- [Safety](docs/safety.md)
+- [API](docs/api.md)
+- [Security policy](SECURITY.md)
+- [Changelog](CHANGELOG.md)
+- [Citation](CITATION.cff)
 
 ---
 
 ## License
 
-MIT for this model card and documentation. Model weights are not included. Premedice name and marks remain the property of Diagnostics AI, Inc.
+MIT for this repository's documentation. The Premedice name, logo and product marks remain the property of Diagnostics AI, Inc.
 
 See [LICENSE](LICENSE).
