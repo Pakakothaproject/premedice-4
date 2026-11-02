@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="assets/banner.svg" alt="Premedice 4 — medical reasoning orchestrator" width="100%" />
+  <img src="assets/banner.svg" alt="Premedice 4 — medical reasoning model" width="100%" />
 </div>
 
 <h1 align="center">Premedice 4</h1>
@@ -38,9 +38,10 @@ It combines a reasoning core with a clinical tool router, whole-record context a
 - tool routing for evidence retrieval
 - citation and uncertainty checks
 - a second-pass verification layer
+- earlier warning tracking across the record
 - one OpenAI-compatible model identifier
 
-You send one request. Premedice 4 plans the evidence work, runs the tools, reads the results, and returns a single cited answer.
+You send one request. Premedice 4 plans the evidence work, runs the tools, reads the results, and returns a single cited answer. Its main advantage is tracking warning signals earlier across labs, medicines, symptoms and history ? the changes a short visit can miss.
 
 ---
 
