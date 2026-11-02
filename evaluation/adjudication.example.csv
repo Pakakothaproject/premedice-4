@@ -1,0 +1,9 @@
+case_id,citation_support,red_flag_caught,unsupported_claim,reviewer,notes
+synthetic-001,supported,not_applicable,no,example-reviewer-a,Synthetic example only
+synthetic-002,not_applicable,yes,no,example-reviewer-a,Synthetic example only
+synthetic-003,supported,yes,no,example-reviewer-a,Synthetic example only
+synthetic-004,not_applicable,not_applicable,no,example-reviewer-a,Synthetic example only
+synthetic-005,supported,not_applicable,no,example-reviewer-a,Synthetic example only
+synthetic-006,supported,yes,no,example-reviewer-a,Synthetic example only
+synthetic-007,supported,not_applicable,no,example-reviewer-a,Synthetic example only
+synthetic-008,supported,not_applicable,no,example-reviewer-a,Synthetic example only

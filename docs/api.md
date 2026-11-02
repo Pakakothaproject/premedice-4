@@ -120,3 +120,7 @@ Uses the same `pm_live_*` key. Built for AI clients that want to delegate medica
 - Clinical decisions remain with a licensed professional.
 
 See [Safety](safety.md).
+
+## OpenAPI
+
+- [OpenAPI 3.0 specification](openapi.yaml)

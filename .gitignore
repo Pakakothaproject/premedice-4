@@ -1,0 +1,6 @@
+__pycache__/
+*.pyc
+evaluation/answers.jsonl
+evaluation/results.json
+evaluation/results.csv
+evaluation/adjudication.local.csv

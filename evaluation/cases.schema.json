@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://premedice.com/schemas/evaluation-case.json",
+  "title": "Premedice 4 evaluation case",
+  "type": "object",
+  "required": ["id", "category", "prompt", "expected_red_flags", "acceptable_source_types", "requires_citation"],
+  "properties": {
+    "id": { "type": "string", "minLength": 1, "maxLength": 80 },
+    "category": {
+      "type": "string",
+      "enum": ["lab", "medication", "guideline", "emergency", "rare-disease", "missing-data", "patient-education", "other"]
+    },
+    "prompt": { "type": "string", "minLength": 1, "maxLength": 8000 },
+    "patient_context": { "type": ["string", "null"], "maxLength": 8000 },
+    "expected_red_flags": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1, "maxLength": 300 },
+      "maxItems": 10
+    },
+    "acceptable_source_types": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1, "maxLength": 40 },
+      "maxItems": 12
+    },
+    "requires_citation": { "type": "boolean" },
+    "notes": { "type": ["string", "null"], "maxLength": 1000 }
+  },
+  "additionalProperties": false
+}
