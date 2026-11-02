@@ -96,7 +96,7 @@ See the [API documentation](docs/api.md).
 ## Documentation
 
 - [What Premedice 4 delivers](docs/results.md)
-- [Model card](docs/model-card.md)
+- [Benchmark comparison](docs/comparison.md)`n- [Model card](docs/model-card.md)
 - [Safety](docs/safety.md)
 - [API](docs/api.md)
 - [Security policy](SECURITY.md)

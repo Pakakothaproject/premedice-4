@@ -8,7 +8,7 @@
 ## Start here
 
 - [What Premedice 4 delivers](results.md) — the results and coverage.
-- [Model card](model-card.md) — what it is, what it delivers, who it is for, and safety boundaries.
+- [Benchmark comparison](comparison.md)`n- [Model card](model-card.md) — what it is, what it delivers, who it is for, and safety boundaries.
 - [API](api.md) — authentication, chat, labs, evidence, MCP.
 - [Safety](safety.md) — emergency use, clinical decisions, evidence, doctor sharing, data safety.
 
