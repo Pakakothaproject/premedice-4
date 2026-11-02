@@ -20,7 +20,6 @@
   <img alt="Status: preview" src="https://img.shields.io/badge/status-preview-orange" />
   <img alt="License: MIT" src="https://img.shields.io/badge/license-MIT-blue" />
   <img alt="Modalities: text + tools" src="https://img.shields.io/badge/modalities-text%20%2B%20tools-0B0B0B" />
-  <img alt="OpenRouter: listing in preparation" src="https://img.shields.io/badge/OpenRouter-listing%20in%20preparation-8A2BE2" />
 </p>
 
 ---
@@ -122,7 +121,7 @@ We do not republish third-party benchmark results as Premedice 4 results. Compos
 
 ## API
 
-Premedice 4 is being prepared for release through the Premedice API and OpenRouter. The request shape below is the preview contract; the OpenRouter listing is not live yet.
+Premedice 4 is being prepared for release through the Premedice API. The request shape below is the preview contract.
 
 ```bash
 curl https://api.premedice.com/v1/chat/completions \
@@ -136,7 +135,7 @@ curl https://api.premedice.com/v1/chat/completions \
   }'
 ```
 
-OpenAI-compatible request and streaming shape. Tool calls happen server-side. Final availability will be announced with the OpenRouter listing.
+OpenAI-compatible request and streaming shape. Tool calls happen server-side. Final availability will be announced through the Premedice API.
 
 ---
 
@@ -152,7 +151,6 @@ OpenAI-compatible request and streaming shape. Tool calls happen server-side. Fi
 | Context | Large-context (preview) |
 | Streaming | OpenAI-compatible SSE |
 | Status | Preview |
-| OpenRouter | Listing in preparation |
 
 ---
 
