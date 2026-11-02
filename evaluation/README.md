@@ -1,6 +1,6 @@
 # Premedice 4 — Evaluation Harness
 
-**Status:** Protocol tooling. No clinical results are published here.  
+**Status:** Protocol tooling. No clinical results are published here.
 **Target:** 100 clinician-adjudicated cases.
 
 ---

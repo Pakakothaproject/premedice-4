@@ -1,10 +1,10 @@
 # Premedice 4 — 100-Case Evaluation Report
 
-**Date:**  
-**Model ID:** `Premedice/Premed-4`  
-**Case set:**  
-**Reviewers:**  
-**Protocol:** `../docs/evaluation.md`  
+**Date:**
+**Model ID:** `Premedice/Premed-4`
+**Case set:**
+**Reviewers:**
+**Protocol:** `../docs/evaluation.md`
 
 ---
 
@@ -57,15 +57,15 @@ It does not cover:
 
 ## Limitations
 
--  
--  
--  
+-
+-
+-
 
 ## What this does not prove
 
--  
--  
--  
+-
+-
+-
 
 ## Publication checklist
 
