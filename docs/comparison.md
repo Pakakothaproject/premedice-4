@@ -1,6 +1,6 @@
 # Premedice 4 — Benchmark Comparison
 
-**Status:** Beta  
+**Status:** Beta
 **Last updated:** 3 November 2026
 
 ---
