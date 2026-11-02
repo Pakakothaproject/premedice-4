@@ -140,7 +140,7 @@ We do not present upstream Argon benchmarks as Premedice 4 results. The composit
 
 ## API
 
-Premedice 4 is available in preview through the Premedice API. The OpenRouter listing is in preparation.
+Premedice 4 is being prepared for release through the Premedice API and OpenRouter. The request shape below is the preview contract; the OpenRouter listing is not live yet.
 
 ```bash
 curl https://api.premedice.com/v1/chat/completions \
@@ -154,7 +154,7 @@ curl https://api.premedice.com/v1/chat/completions \
   }'
 ```
 
-OpenAI-compatible request and streaming shape. Tool calls happen server-side.
+OpenAI-compatible request and streaming shape. Tool calls happen server-side. Final availability will be announced with the OpenRouter listing.
 
 ---
 

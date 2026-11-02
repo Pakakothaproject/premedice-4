@@ -18,4 +18,4 @@ Premedice 4 is being prepared for an OpenRouter listing. This repository does no
 
 ## Until then
 
-Use the Premedice API preview at [api.premedice.com](https://api.premedice.com).
+Follow this repository for the listing date. Existing Premedice API documentation covers the generally available Premedice 1 model.
