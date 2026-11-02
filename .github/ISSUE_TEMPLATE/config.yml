@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Security report
+    url: https://github.com/Pakakothaproject/premedice-4/security/advisories/new
+    about: Report a vulnerability privately. Do not include patient data.
+  - name: Product and API
+    url: https://premedice.com
+    about: Product, pricing, and account questions.

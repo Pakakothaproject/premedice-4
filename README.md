@@ -26,9 +26,11 @@
 
 ## What Premedice 4 is
 
-Premedice 4 is a **proprietary medical reasoning model** built and operated by Premedice.
+Premedice 4 is a **proprietary medical reasoning system** built and operated by Premedice.
 
-It combines a reasoning core with a clinical tool router, whole-record context and a verification pass. It reads the request, plans the evidence work, retrieves from clinical sources, drafts the answer, checks it against the evidence, and returns one cited response.
+It is an inference-time system, not a foundation model. It does not ship model weights, and this repository does not contain a training corpus.
+
+It combines a reasoning layer with a clinical tool router, whole-record context and a verification pass. It reads the request, plans the evidence work, retrieves from clinical sources, drafts the answer, checks it against the evidence, and returns one cited response.
 
 **What the model adds:**
 
@@ -40,7 +42,7 @@ It combines a reasoning core with a clinical tool router, whole-record context a
 - earlier warning tracking across the record
 - one OpenAI-compatible model identifier
 
-You send one request. Premedice 4 plans the evidence work, runs the tools, reads the results, and returns a single cited answer. Its main advantage is tracking warning signals earlier across labs, medicines, symptoms and history ? the changes a short visit can miss.
+You send one request. Premedice 4 plans the evidence work, runs the tools, reads the results, and returns a single cited answer. Its main advantage is tracking warning signals earlier across labs, medicines, symptoms and history — the changes a short visit can miss.
 
 ---
 
@@ -98,6 +100,19 @@ Premedice 4 is in preview. The composite model evaluation is in progress.
 
 We do not republish third-party benchmark results as Premedice 4 results. Composite results will be published with their methodology and limitations.
 
+## Documentation
+
+- [Model card](docs/model-card.md) — intended use, architecture, data handling, evaluation status, limitations.
+- [Evaluation protocol](docs/evaluation.md) — how clinical accuracy will be measured before any claim is made.
+- [Limitations](docs/limitations.md) — known clinical, evidence, record, doctor, operational, and regulatory limits.
+- [Safety](docs/safety.md) — emergency use, autonomous-action limits, evidence checks, and data safety.
+- [API](docs/api.md) — authentication, chat, labs, evidence, MCP, and preview limits.
+- [Reliability](docs/reliability.md) — what is measured, what is not, and client behavior.
+- [Architecture](docs/architecture.md) — request flow and design principles.
+- [Roadmap](docs/roadmap.md) — now, next, later, and not planned.
+- [Public evaluation harness](evaluation/README.md) — structural smoke tests, not clinical validation.
+- [Security policy](SECURITY.md), [changelog](CHANGELOG.md), [citation](CITATION.cff).
+
 ## What Premedice 4 is good at
 
 - Medical question answering with retrieved evidence
@@ -121,14 +136,14 @@ We do not republish third-party benchmark results as Premedice 4 results. Compos
 
 ## API
 
-Premedice 4 is being prepared for release through the Premedice API. The request shape below is the preview contract.
+Premedice 4 is available in preview through the Premedice API. The request shape below is the current preview contract.
 
 ```bash
 curl https://api.premedice.com/v1/chat/completions \
   -H "Authorization: Bearer pm_live_YOUR_KEY" \
   -H "Content-Type: application/json" \
   -d '{
-    "model": "premedice-4",
+    "model": "Premedice/Premed-4",
     "messages": [
       {"role": "user", "content": "Review these labs in the context of the patient's current medications and flag what should be discussed with a clinician."}
     ]
@@ -143,8 +158,8 @@ OpenAI-compatible request and streaming shape. Tool calls happen server-side. Fi
 
 | Property | Value |
 |---|---|
-| Model ID | `premedice-4` |
-| Class | Proprietary medical reasoning model |
+| Model ID | `Premedice/Premed-4` |
+| Class | Proprietary medical reasoning system (not a foundation model) |
 | Input | Text + patient-record context |
 | Output | Text + citations |
 | Tool use | Server-side, automatic |
