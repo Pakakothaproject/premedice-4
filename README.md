@@ -5,7 +5,7 @@
 <h1 align="center">Premedice 4</h1>
 
 <p align="center">
-  <strong>A medical reasoning orchestrator.</strong><br/>
+  <strong>A medical reasoning model.</strong><br/>
   One model identifier. Live clinical sources. Cited answers. Whole-record context.
 </p>
 
@@ -27,13 +27,11 @@
 
 ## What Premedice 4 is
 
-Premedice 4 is an **orchestrator model** for medical reasoning.
+Premedice 4 is a **proprietary medical reasoning model** built and operated by Premedice.
 
-It is not a from-scratch foundation model. It is a composition layer that routes a request across frontier reasoning models and a clinical toolbelt, then verifies the answer against the sources it retrieved.
+It combines a reasoning core with a clinical tool router, whole-record context and a verification pass. It reads the request, plans the evidence work, retrieves from clinical sources, drafts the answer, checks it against the evidence, and returns one cited response.
 
-**Primary reasoning model:** Gemini 4 Argon.
-
-**What the orchestrator adds:**
+**What the model adds:**
 
 - whole-record context (labs, medicines, documents, history)
 - live access to clinical sources
@@ -46,7 +44,7 @@ You send one request. Premedice 4 plans the evidence work, runs the tools, reads
 
 ---
 
-## Why an orchestrator?
+## Why Premedice 4?
 
 Medical knowledge changes faster than any single model can be retrained. A model frozen at training time is a liability when labels change, trials read out, or a guideline is updated.
 
@@ -65,8 +63,8 @@ Premedice 4 treats the model as the **reasoning layer**, not the **knowledge lay
 
 ```mermaid
 flowchart LR
-  U[Client request] --> O[Premedice 4 orchestrator]
-  O --> P[Primary reasoning model<br/>Gemini 4 Argon]
+  U[Client request] --> O[Premedice 4 model]
+  O --> M[Premedice 4 reasoning core]
   O --> R[Patient record context]
   O --> T[Clinical tool router]
   T --> L[PubMed / Europe PMC / Cochrane]
@@ -74,7 +72,7 @@ flowchart LR
   T --> C[ClinicalTrials.gov / Open Targets / ChEMBL]
   T --> H[HPO / Orphanet / MONDO]
   T --> A[AlphaFold]
-  P --> V[Verification pass]
+  M --> V[Verification pass]
   L --> V
   D --> V
   C --> V
@@ -85,37 +83,20 @@ flowchart LR
 
 ---
 
-## Upstream benchmark: Gemini 4 Argon
+## Evaluation status
 
-These are **Google DeepMind's published results for Gemini 4 Argon**, the primary reasoning model behind Premedice 4. They are **not** Premedice 4 composite results.
-
-| Benchmark | Gemini 4 Argon |
-|---|---:|
-| AA Index v5.0 | 50 |
-| Vals Index v2.2 | 69.2% |
-| FrontierSWE 2 | 55.0% |
-| Terminal-Bench 4.0 | 57.1% |
-| Agents' Last Exam v1.1 | 69.0% |
-| GraphWalks 256k–1M (F1) | 84.2% |
-| RiemannBench | 76.0% |
-| CWE-bench | 68.0% |
-| SEC-bench Pro | 83.4% |
-
-**Source:** Google DeepMind, Gemini 4 Argon performance table, October 2026 — [deepmind.google/models/gemini](https://deepmind.google/models/gemini/).
-
-### Premedice 4 composite evaluation
+Premedice 4 is in preview. The composite model evaluation is in progress.
 
 | Evaluation | Status |
 |---|---|
-| Clinical reasoning | In progress |
+| Medical reasoning | In progress |
 | Citation precision | In progress |
 | Tool-call accuracy | In progress |
 | Safety / red-flag handling | In progress |
 | External clinical validation | Not yet published |
+| Public benchmark results | Not yet published |
 
-We do not present upstream Argon benchmarks as Premedice 4 results. The composite evaluation will be published with its methodology and limitations.
-
----
+We do not republish third-party benchmark results as Premedice 4 results. Composite results will be published with their methodology and limitations.
 
 ## What Premedice 4 is good at
 
@@ -163,12 +144,11 @@ OpenAI-compatible request and streaming shape. Tool calls happen server-side. Fi
 | Property | Value |
 |---|---|
 | Model ID | `premedice-4` |
-| Class | Medical reasoning orchestrator |
-| Primary reasoning model | Gemini 4 Argon |
+| Class | Proprietary medical reasoning model |
 | Input | Text + patient-record context |
 | Output | Text + citations |
 | Tool use | Server-side, automatic |
-| Context | 1M-token upstream context window |
+| Context | Large-context (preview) |
 | Streaming | OpenAI-compatible SSE |
 | Status | Preview |
 | OpenRouter | Listing in preparation |

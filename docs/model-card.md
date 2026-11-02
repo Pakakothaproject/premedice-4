@@ -3,8 +3,7 @@
 ## Model details
 
 - **Name:** Premedice 4
-- **Class:** Medical reasoning orchestrator
-- **Primary reasoning model:** Gemini 4 Argon
+- **Class:** Proprietary medical reasoning model
 - **Version:** preview
 - **Owner:** Diagnostics AI, Inc.
 - **License:** MIT for this documentation; model weights are not included.
@@ -31,11 +30,11 @@ Premedice 4 is intended for:
 
 ## Architecture
 
-Premedice 4 composes a primary frontier reasoning model with a clinical tool router, whole-record context, and a verification pass. It is not a single end-to-end trained foundation model.
+Premedice 4 combines a reasoning core with a clinical tool router, whole-record context, and a verification pass.
 
 ## Evaluation
 
-Upstream Gemini 4 Argon results are published by Google DeepMind. Premedice 4 composite evaluation is in progress. No external clinical validation has been published.
+Premedice 4 composite evaluation is in progress. No external clinical validation or public composite benchmark has been published.
 
 ## Limitations
 
